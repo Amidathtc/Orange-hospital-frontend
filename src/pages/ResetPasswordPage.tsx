@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api, ApiError } from '../lib/api';
+import { AuthLayout } from '../components/AuthLayout';
 
 export function ResetPasswordPage() {
   const navigate = useNavigate();
@@ -29,19 +30,8 @@ export function ResetPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="w-full max-w-sm">
-        <div className="flex items-center gap-2 justify-center mb-8">
-          <div className="w-8 h-8 rounded-full bg-rust relative">
-            <div className="absolute inset-[3px] rounded-full border-2 border-paper" />
-          </div>
-          <span className="font-display font-semibold text-lg">
-            Orange Health <span className="text-rust">Ajo</span>
-          </span>
-        </div>
-
-        <div className="bg-white border border-ink/10 rounded-2xl p-7">
-          {!token ? (
+    <AuthLayout>
+      {!token ? (
             <p className="text-sm text-rust">
               This link is missing its reset token. Request a new one from the sign-in page.
             </p>
@@ -79,8 +69,6 @@ export function ResetPasswordPage() {
               </form>
             </>
           )}
-        </div>
-      </div>
-    </div>
+    </AuthLayout>
   );
 }
