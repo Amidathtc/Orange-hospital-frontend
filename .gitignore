@@ -17,6 +17,7 @@ build/
 
 # Vite
 *.local
+*.timestamp-*.mjs
 
 # TypeScript build info
 *.tsbuildinfo
