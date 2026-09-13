@@ -3,10 +3,18 @@ import { useAuth } from '../context/AuthContext';
 
 type Role = 'MEMBER' | 'RECEPTIONIST' | 'ADMIN';
 
-// Note: this is a UX convenience, not the real security boundary — a member
-// typing /admin in the address bar gets bounced here, but the actual protection
-// is the backend's RolesGuard rejecting their API calls regardless of what
-// the frontend shows. Never rely on this component alone.
+function getRoleHome(role: Role): string {
+  switch (role) {
+    case 'ADMIN':
+      return '/admin';
+    case 'RECEPTIONIST':
+      return '/reception';
+    case 'MEMBER':
+    default:
+      return '/member';
+  }
+}
+
 export function ProtectedRoute({
   allowedRoles,
   children,
@@ -17,15 +25,30 @@ export function ProtectedRoute({
   const { user, loading } = useAuth();
 
   if (loading) {
-    return <div className="p-8 text-center text-ink-soft">Loading…</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-paper text-ink-soft text-sm font-medium">
+        <div className="flex items-center gap-2">
+          <svg className="animate-spin h-5 w-5 text-forest" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+          </svg>
+          <span>Loading…</span>
+        </div>
+      </div>
+    );
   }
 
+  // Not logged in -> send to login
   if (!user) {
     return <Navigate to="/login" replace />;
   }
 
+  // Logged in but not authorized for this route:
+  // Strictly bounce them back to their own authorized dashboard.
+  // A MEMBER trying to open /reception or /admin -> bounced to /member.
+  // A RECEPTIONIST trying to open /admin -> bounced to /reception.
   if (!allowedRoles.includes(user.role)) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={getRoleHome(user.role)} replace />;
   }
 
   return <>{children}</>;
