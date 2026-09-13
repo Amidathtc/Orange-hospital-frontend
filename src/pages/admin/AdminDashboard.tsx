@@ -1,11 +1,12 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
+import { Users, Wallet, Heart, LogOut, ClipboardList } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { api, ApiError } from '../../lib/api';
 import { formatNaira } from '../../lib/money';
 import { CreateStaffForm } from '../../components/CreateStaffForm';
 import { Greeting } from '../../components/Greeting';
 import { ClaimsPanel } from '../../components/ClaimsPanel';
-import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
+import { Skeleton } from '../../components/Skeleton';
 
 interface Summary {
   totalMembers: number;
@@ -43,7 +44,6 @@ export function AdminDashboard() {
         method: 'PATCH',
         body: { decision },
       });
-      // Refresh both — an approval changes the health fund total too.
       loadAll();
     } catch (err) {
       setActionError(
@@ -55,25 +55,19 @@ export function AdminDashboard() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between bg-white/60 backdrop-blur-sm sticky top-0 z-20">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-white border border-ink/10 flex items-center justify-center shadow-xs">
-            <OrangeHospitalLogo className="w-6 h-6" />
-          </div>
-          <div className="flex items-center gap-2.5">
-            <span className="font-display font-semibold text-base">
-              Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
-              <span className="text-ink-soft font-normal text-sm">Admin</span>
-            </span>
-            <span className="hidden sm:inline-block">
-              <PoweredByOrangeHospital theme="light" />
-            </span>
-          </div>
-        </div>
+    <div className="min-h-screen bg-paper">
+      <header className="sticky top-0 z-10 bg-paper/90 backdrop-blur-sm border-b border-ink/10 px-6 py-4 flex items-center justify-between">
+        <span className="font-display font-semibold">
+          Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
+          <span className="text-ink-soft font-normal text-sm">Admin</span>
+        </span>
         <div className="flex items-center gap-4">
           <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
-          <button onClick={logout} className="text-sm font-semibold text-ink-soft hover:text-ink">
+          <button
+            onClick={logout}
+            className="flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-ink transition-colors"
+          >
+            <LogOut size={15} />
             Sign out
           </button>
         </div>
@@ -83,16 +77,25 @@ export function AdminDashboard() {
         {user && <Greeting fullName={user.fullName} role="ADMIN" />}
         <h2 className="font-display text-lg font-semibold mb-4">Fund overview</h2>
 
-        {summary && (
-          <div className="grid grid-cols-3 gap-3 mb-8">
-            <Stat label="Total members" value={String(summary.totalMembers)} />
-            <Stat label="Health fund pool" value={formatNaira(summary.healthFundTotal)} />
-            <Stat label="General ajo pool" value={formatNaira(summary.generalFundTotal)} />
-          </div>
-        )}
+        <div className="grid grid-cols-3 gap-3 mb-8">
+          {!summary ? (
+            <>
+              <StatSkeleton />
+              <StatSkeleton />
+              <StatSkeleton />
+            </>
+          ) : (
+            <>
+              <Stat icon={Users} label="Total members" value={String(summary.totalMembers)} />
+              <Stat icon={Heart} label="Health fund pool" value={formatNaira(summary.healthFundTotal)} />
+              <Stat icon={Wallet} label="General ajo pool" value={formatNaira(summary.generalFundTotal)} />
+            </>
+          )}
+        </div>
 
-        <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden">
-          <div className="px-6 py-4 border-b border-ink/10">
+        <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden shadow-sm">
+          <div className="px-6 py-4 border-b border-ink/10 flex items-center gap-2">
+            <ClipboardList size={16} className="text-ink-soft" />
             <h2 className="font-semibold text-sm">Health fund draw requests</h2>
           </div>
 
@@ -121,14 +124,14 @@ export function AdminDashboard() {
                 <button
                   onClick={() => review(req.id, 'DECLINED')}
                   disabled={busyId === req.id}
-                  className="text-xs font-semibold border border-ink/15 rounded-lg px-3 py-2 text-ink-soft disabled:opacity-50"
+                  className="text-xs font-semibold border border-ink/15 rounded-lg px-3 py-2 text-ink-soft disabled:opacity-50 transition-all active:scale-[0.98]"
                 >
                   Decline
                 </button>
                 <button
                   onClick={() => review(req.id, 'APPROVED')}
                   disabled={busyId === req.id}
-                  className="text-xs font-semibold bg-forest text-white rounded-lg px-3 py-2 disabled:opacity-50"
+                  className="text-xs font-semibold bg-forest hover:bg-forest-light text-white rounded-lg px-3 py-2 disabled:opacity-50 transition-all active:scale-[0.98]"
                 >
                   Approve
                 </button>
@@ -144,11 +147,23 @@ export function AdminDashboard() {
   );
 }
 
-function Stat({ label, value }: { label: string; value: string }) {
+function Stat({ icon: Icon, label, value }: { icon: typeof Users; label: string; value: string }) {
+  return (
+    <div className="bg-white border border-ink/10 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow">
+      <div className="flex items-center gap-1.5 text-ink-soft mb-1.5">
+        <Icon size={13} />
+        <div className="text-xs">{label}</div>
+      </div>
+      <div className="font-display text-lg font-medium">{value}</div>
+    </div>
+  );
+}
+
+function StatSkeleton() {
   return (
     <div className="bg-white border border-ink/10 rounded-xl p-4">
-      <div className="text-xs text-ink-soft mb-1.5">{label}</div>
-      <div className="font-display text-lg font-medium">{value}</div>
+      <Skeleton className="h-3.5 w-20 mb-2.5" />
+      <Skeleton className="h-6 w-16" />
     </div>
   );
 }

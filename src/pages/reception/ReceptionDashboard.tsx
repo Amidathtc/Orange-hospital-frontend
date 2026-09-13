@@ -1,11 +1,11 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
+import { Search, LogOut, UserRound, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { api, ApiError } from '../../lib/api';
 import { formatNaira, nairaToKobo } from '../../lib/money';
 import { Greeting } from '../../components/Greeting';
 import { FileClaimForm } from '../../components/FileClaimForm';
 import { AssistedResetForm } from '../../components/AssistedResetForm';
-import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
 
 type FundType = 'HEALTH' | 'GENERAL';
 
@@ -80,25 +80,19 @@ export function ReceptionDashboard() {
   }
 
   return (
-    <div className="min-h-screen">
-      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between bg-white/60 backdrop-blur-sm sticky top-0 z-20">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-white border border-ink/10 flex items-center justify-center shadow-xs">
-            <OrangeHospitalLogo className="w-6 h-6" />
-          </div>
-          <div className="flex items-center gap-2.5">
-            <span className="font-display font-semibold text-base">
-              Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
-              <span className="text-ink-soft font-normal text-sm">Front desk</span>
-            </span>
-            <span className="hidden sm:inline-block">
-              <PoweredByOrangeHospital theme="light" />
-            </span>
-          </div>
-        </div>
+    <div className="min-h-screen bg-paper">
+      <header className="sticky top-0 z-10 bg-paper/90 backdrop-blur-sm border-b border-ink/10 px-6 py-4 flex items-center justify-between">
+        <span className="font-display font-semibold">
+          Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
+          <span className="text-ink-soft font-normal text-sm">Front desk</span>
+        </span>
         <div className="flex items-center gap-4">
           <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
-          <button onClick={logout} className="text-sm font-semibold text-ink-soft hover:text-ink">
+          <button
+            onClick={logout}
+            className="flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-ink transition-colors"
+          >
+            <LogOut size={15} />
             Sign out
           </button>
         </div>
@@ -109,18 +103,21 @@ export function ReceptionDashboard() {
         <h2 className="font-display text-lg font-semibold mb-4">Walk-in contribution</h2>
 
         <form onSubmit={handleSearch} className="flex gap-2 mb-6">
-          <input
-            type="tel"
-            required
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            placeholder="Member's phone number"
-            className="flex-1 px-3 py-2.5 border border-ink/15 rounded-lg text-sm focus:outline-none focus:border-forest"
-          />
+          <div className="flex-1 relative">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-ink-soft" />
+            <input
+              type="tel"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              placeholder="Member's phone number"
+              className="w-full pl-9 pr-3 py-2.5 border border-ink/15 rounded-lg text-sm focus:outline-none focus:border-forest"
+            />
+          </div>
           <button
             type="submit"
             disabled={searching}
-            className="bg-ink text-white text-sm font-semibold px-5 rounded-lg disabled:opacity-60"
+            className="bg-ink text-white text-sm font-semibold px-5 rounded-lg disabled:opacity-60 transition-all active:scale-[0.98]"
           >
             {searching ? 'Searching…' : 'Find'}
           </button>
@@ -129,9 +126,16 @@ export function ReceptionDashboard() {
         {searchError && <div className="text-rust text-sm mb-6">{searchError}</div>}
 
         {member && (
-          <div className="bg-white border border-ink/10 rounded-2xl p-6">
-            <div className="font-semibold mb-1">{member.fullName}</div>
-            <div className="text-sm text-ink-soft mb-5">{member.phone}</div>
+          <div className="bg-white border border-ink/10 rounded-2xl p-6 shadow-sm">
+            <div className="flex items-center gap-2.5 mb-5">
+              <div className="w-9 h-9 rounded-full bg-ink/5 text-ink-soft flex items-center justify-center shrink-0">
+                <UserRound size={17} />
+              </div>
+              <div>
+                <div className="font-semibold">{member.fullName}</div>
+                <div className="text-xs text-ink-soft">{member.phone}</div>
+              </div>
+            </div>
 
             <div className="grid grid-cols-2 gap-3 mb-6">
               {member.funds.map((f) => (
@@ -166,12 +170,16 @@ export function ReceptionDashboard() {
               </div>
 
               {logError && <div className="text-rust text-sm">{logError}</div>}
-              {logSuccess && <div className="text-forest text-sm">{logSuccess}</div>}
+              {logSuccess && (
+                <div className="flex items-center gap-1.5 text-forest text-sm">
+                  <ShieldCheck size={15} /> {logSuccess}
+                </div>
+              )}
 
               <button
                 type="submit"
                 disabled={logging}
-                className="w-full bg-forest text-white font-semibold text-sm rounded-lg py-3 disabled:opacity-60"
+                className="w-full bg-forest hover:bg-forest-light text-white font-semibold text-sm rounded-lg py-3 disabled:opacity-60 transition-all active:scale-[0.98]"
               >
                 {logging ? 'Recording…' : 'Record & receipt'}
               </button>
@@ -225,7 +233,7 @@ function WitnessKinForm({ memberId }: { memberId: string }) {
         )}
         <button
           onClick={() => setOpen(true)}
-          className="text-xs font-semibold border border-ink/15 rounded-lg px-3 py-2 text-ink-soft"
+          className="text-xs font-semibold border border-ink/15 rounded-lg px-3 py-2 text-ink-soft hover:bg-ink/[0.03] transition-colors"
         >
           Record next of kin for this member
         </button>
@@ -272,7 +280,7 @@ function WitnessKinForm({ memberId }: { memberId: string }) {
         <button
           type="submit"
           disabled={saving}
-          className="flex-1 bg-forest text-white rounded-lg py-2.5 text-sm font-semibold disabled:opacity-60"
+          className="flex-1 bg-forest text-white rounded-lg py-2.5 text-sm font-semibold disabled:opacity-60 transition-all active:scale-[0.98]"
         >
           {saving ? 'Saving…' : 'Save'}
         </button>

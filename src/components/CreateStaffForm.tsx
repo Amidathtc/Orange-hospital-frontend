@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { api, ApiError } from '../lib/api';
 
 type StaffRole = 'RECEPTIONIST' | 'ADMIN';
@@ -41,7 +41,7 @@ export function CreateStaffForm() {
   }
 
   return (
-    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-6">
+    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-6 shadow-sm">
       <div className="px-6 py-4 border-b border-ink/10 flex items-center justify-between">
         <h3 className="font-semibold text-sm">Staff accounts</h3>
         {!open && (

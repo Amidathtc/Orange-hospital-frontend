@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { api, ApiError } from '../lib/api';
 import { formatNaira } from '../lib/money';
 
@@ -68,7 +68,7 @@ export function ClaimsPanel() {
   }
 
   return (
-    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-6">
+    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-6 shadow-sm">
       <div className="px-6 py-4 border-b border-ink/10">
         <h3 className="font-semibold text-sm">Beneficiary claims</h3>
       </div>

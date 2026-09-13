@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { api, ApiError } from '../lib/api';
 
 interface NextOfKin {
@@ -53,7 +53,7 @@ export function NextOfKinCard() {
   }
 
   return (
-    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-5">
+    <div className="bg-white border border-ink/10 rounded-2xl overflow-hidden mt-5 shadow-sm">
       <div className="px-6 py-4 border-b border-ink/10 flex items-center justify-between">
         <h3 className="font-semibold text-sm">Next of kin</h3>
         {!editing && (
