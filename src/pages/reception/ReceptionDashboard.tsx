@@ -5,6 +5,7 @@ import { formatNaira, nairaToKobo } from '../../lib/money';
 import { Greeting } from '../../components/Greeting';
 import { FileClaimForm } from '../../components/FileClaimForm';
 import { AssistedResetForm } from '../../components/AssistedResetForm';
+import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
 
 type FundType = 'HEALTH' | 'GENERAL';
 
@@ -80,14 +81,24 @@ export function ReceptionDashboard() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between">
-        <span className="font-display font-semibold">
-          Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
-          <span className="text-ink-soft font-normal text-sm">Front desk</span>
-        </span>
+      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between bg-white/60 backdrop-blur-sm sticky top-0 z-20">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-white border border-ink/10 flex items-center justify-center shadow-xs">
+            <OrangeHospitalLogo className="w-6 h-6" />
+          </div>
+          <div className="flex items-center gap-2.5">
+            <span className="font-display font-semibold text-base">
+              Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
+              <span className="text-ink-soft font-normal text-sm">Front desk</span>
+            </span>
+            <span className="hidden sm:inline-block">
+              <PoweredByOrangeHospital theme="light" />
+            </span>
+          </div>
+        </div>
         <div className="flex items-center gap-4">
           <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
-          <button onClick={logout} className="text-sm font-semibold text-ink-soft">
+          <button onClick={logout} className="text-sm font-semibold text-ink-soft hover:text-ink">
             Sign out
           </button>
         </div>

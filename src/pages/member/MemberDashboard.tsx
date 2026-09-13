@@ -6,6 +6,7 @@ import { ContributeModal } from '../../components/ContributeModal';
 import { NextOfKinCard } from '../../components/NextOfKinCard';
 import { Greeting } from '../../components/Greeting';
 import { DrawRequestModal } from '../../components/DrawRequestModal';
+import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
 
 type Frequency = 'DAILY' | 'WEEKLY' | 'MONTHLY';
 type FundType = 'HEALTH' | 'GENERAL';
@@ -86,14 +87,19 @@ export function MemberDashboard() {
 
   return (
     <div className="min-h-screen">
-      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-rust relative shrink-0">
-            <div className="absolute inset-[2.5px] rounded-full border-2 border-paper" />
+      <header className="border-b border-ink/10 px-6 py-4 flex items-center justify-between bg-white/60 backdrop-blur-sm sticky top-0 z-20">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-lg bg-white border border-ink/10 flex items-center justify-center shadow-xs">
+            <OrangeHospitalLogo className="w-6 h-6" />
           </div>
-          <span className="font-display font-semibold">
-            Orange Health <span className="text-rust">Ajo</span>
-          </span>
+          <div className="flex items-center gap-2.5">
+            <span className="font-display font-semibold text-base">
+              Orange Health <span className="text-rust">Ajo</span>
+            </span>
+            <span className="hidden sm:inline-block">
+              <PoweredByOrangeHospital theme="light" />
+            </span>
+          </div>
         </div>
         <div className="flex items-center gap-4">
           <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
