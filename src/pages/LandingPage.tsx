@@ -40,6 +40,7 @@ export function LandingPage() {
   // Live activity simulation toast for social proof vibrancy
   const [activeToast, setActiveToast] = useState(0);
   const liveActivities = [
+    { name: 'Amidat H.', action: 'saved ₦2,500 to Health Ajo', time: 'Just now', badge: '🏥 Health Pool' },
     { name: 'Blessing O.', action: 'saved ₦1,500 to Health Ajo', time: '2 mins ago', badge: '🏥 Health Pool' },
     { name: 'Emmanuel K.', action: 'processed ₦10,000 emergency draw', time: '5 mins ago', badge: '💰 General Pool' },
     { name: 'Mrs. Adebayo', action: 'paid ₦2,000 via Reception Desk', time: '12 mins ago', badge: '📍 Walk-in' },
@@ -191,13 +192,13 @@ export function LandingPage() {
               {/* Social Proof Pill */}
               <div className="pt-4 flex items-center gap-4 border-t border-[#1F4D3D]/10">
                 <div className="flex -space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-[#1F4D3D] text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs">
+                  <div className="w-10 h-10 rounded-full bg-[#B8452D] text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs shadow-sm">
+                    AH
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-[#1F4D3D] text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs shadow-sm">
                     AO
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-[#B8452D] text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs">
-                    EK
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs">
+                  <div className="w-10 h-10 rounded-full bg-amber-600 text-white font-bold flex items-center justify-center border-2 border-[#FBF7EE] text-xs shadow-sm">
                     DM
                   </div>
                 </div>
