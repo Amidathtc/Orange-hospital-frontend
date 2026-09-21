@@ -162,11 +162,12 @@ export function LandingPage() {
 
               {/* Bold Display Headline */}
               <h1 className="text-4xl sm:text-6xl lg:text-7xl font-display font-extrabold text-[#1F4D3D] leading-[1.08] tracking-tight">
-                Smart Savings for Your <span className="text-[#B8452D] relative underline decoration-[#B8452D]/20 decoration-wavy">Health</span> & Emergency Cash.
+                Save Together. <br className="hidden sm:inline" />
+                <span className="text-[#B8452D]">Heal Together.</span>
               </h1>
 
               <p className="text-base sm:text-xl text-[#1C2826]/75 max-w-xl font-normal leading-relaxed">
-                Save daily or weekly. Get guaranteed medical bill subsidies at **Orange Hospital** while building flexible emergency cash reserves.
+                Save daily or weekly. Get guaranteed medical bill subsidies at <strong className="font-semibold text-[#1F4D3D]">Orange Hospital</strong> while building flexible emergency cash reserves.
               </p>
 
               {/* Action Buttons */}
