@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HeartPulse, Users, LogOut, Clock3, CheckCircle2, XCircle } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { api } from '../../lib/api';
@@ -8,6 +8,7 @@ import { NextOfKinCard } from '../../components/NextOfKinCard';
 import { Greeting } from '../../components/Greeting';
 import { DrawRequestModal } from '../../components/DrawRequestModal';
 import { FundCardSkeleton } from '../../components/Skeleton';
+import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
 
 type Frequency = 'DAILY' | 'WEEKLY' | 'MONTHLY';
 type FundType = 'HEALTH' | 'GENERAL';
@@ -85,24 +86,29 @@ export function MemberDashboard() {
   const general = funds?.find((f) => f.type === 'GENERAL');
 
   return (
-    <div className="min-h-screen bg-paper">
-      <header className="sticky top-0 z-10 bg-paper/90 backdrop-blur-sm border-b border-ink/10 px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-rust relative shrink-0">
-            <div className="absolute inset-[2.5px] rounded-full border-2 border-paper" />
+    <div className="min-h-screen bg-gradient-to-b from-[#F9F6F0] via-paper to-[#F3ECE0]">
+      <header className="sticky top-0 z-20 bg-white/85 backdrop-blur-md border-b border-ink/10 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-white border border-ink/10 flex items-center justify-center shadow-xs">
+            <OrangeHospitalLogo className="w-6 h-6" />
           </div>
-          <span className="font-display font-semibold">
-            Orange Health <span className="text-rust">Ajo</span>
-          </span>
+          <div className="flex items-center gap-2.5">
+            <span className="font-display font-semibold text-base tracking-tight text-ink">
+              Orange Health <span className="text-rust">Ajo</span>
+            </span>
+            <span className="hidden md:inline-block">
+              <PoweredByOrangeHospital theme="light" />
+            </span>
+          </div>
         </div>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
+        <div className="flex items-center gap-3 sm:gap-5">
+          <span className="text-xs font-medium text-ink-soft hidden sm:inline">{user?.fullName}</span>
           <button
             onClick={logout}
-            className="flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-ink transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-ink-soft hover:text-rust transition-colors px-3 py-1.5 rounded-lg border border-ink/10 hover:border-rust/20 bg-white hover:bg-rust/5"
           >
-            <LogOut size={15} />
-            Sign out
+            <LogOut size={14} />
+            <span>Sign out</span>
           </button>
         </div>
       </header>

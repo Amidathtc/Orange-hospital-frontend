@@ -1,8 +1,9 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Search, LogOut, UserRound, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { api, ApiError } from '../../lib/api';
 import { formatNaira, nairaToKobo } from '../../lib/money';
+import { OrangeHospitalLogo, PoweredByOrangeHospital } from '../../components/OrangeHospitalLogo';
 import { Greeting } from '../../components/Greeting';
 import { FileClaimForm } from '../../components/FileClaimForm';
 import { AssistedResetForm } from '../../components/AssistedResetForm';
@@ -80,20 +81,32 @@ export function ReceptionDashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-paper">
-      <header className="sticky top-0 z-10 bg-paper/90 backdrop-blur-sm border-b border-ink/10 px-6 py-4 flex items-center justify-between">
-        <span className="font-display font-semibold">
-          Orange Health <span className="text-rust">Ajo</span> &middot;{' '}
-          <span className="text-ink-soft font-normal text-sm">Front desk</span>
-        </span>
-        <div className="flex items-center gap-4">
-          <span className="text-sm text-ink-soft hidden sm:inline">{user?.fullName}</span>
+    <div className="min-h-screen bg-gradient-to-b from-[#F9F6F0] via-paper to-[#F3ECE0]">
+      <header className="sticky top-0 z-20 bg-white/85 backdrop-blur-md border-b border-ink/10 px-4 sm:px-8 py-3.5 flex items-center justify-between shadow-xs">
+        <div className="flex items-center gap-3">
+          <div className="w-9 h-9 rounded-xl bg-white border border-ink/10 flex items-center justify-center shadow-xs">
+            <OrangeHospitalLogo className="w-6 h-6" />
+          </div>
+          <div className="flex items-center gap-2.5">
+            <span className="font-display font-semibold text-base tracking-tight text-ink">
+              Orange Health <span className="text-rust">Ajo</span>
+            </span>
+            <span className="text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-md bg-forest/10 text-forest border border-forest/15">
+              Front Desk
+            </span>
+            <span className="hidden md:inline-block">
+              <PoweredByOrangeHospital theme="light" />
+            </span>
+          </div>
+        </div>
+        <div className="flex items-center gap-3 sm:gap-5">
+          <span className="text-xs font-medium text-ink-soft hidden sm:inline">{user?.fullName}</span>
           <button
             onClick={logout}
-            className="flex items-center gap-1.5 text-sm font-semibold text-ink-soft hover:text-ink transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold text-ink-soft hover:text-rust transition-colors px-3 py-1.5 rounded-lg border border-ink/10 hover:border-rust/20 bg-white hover:bg-rust/5"
           >
-            <LogOut size={15} />
-            Sign out
+            <LogOut size={14} />
+            <span>Sign out</span>
           </button>
         </div>
       </header>
