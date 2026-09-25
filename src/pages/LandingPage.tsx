@@ -367,23 +367,23 @@ export function LandingPage() {
               </div>
             </div>
 
-            {/* Bento Card 3: Online Paystack Payments */}
+            {/* Bento Card 3: Monnify Payments */}
             <div className="bg-[#FBF7EE] rounded-3xl p-8 border border-[#1F4D3D]/10 shadow-sm flex flex-col justify-between">
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#B8452D]/10 text-[#B8452D] flex items-center justify-center mb-6">
                   <Zap className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-display font-bold text-[#1F4D3D]">
-                  Instant Online Paystack Top-up
+                  Monnify Bank Transfer & Cards
                 </h3>
                 <p className="text-sm text-[#1C2826]/75 mt-3 leading-relaxed">
-                  Pay securely with debit card, bank transfer, or USSD directly from your phone.
+                  Pay via instant bank transfer, dedicated Ajo account number, USSD, or debit card powered by Monnify.
                 </p>
               </div>
 
               <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-[#B8452D]">
                 <ShieldCheck className="w-4 h-4" />
-                <span>256-bit Encrypted Payments</span>
+                <span>Monnify Bank-Grade Encryption</span>
               </div>
             </div>
 
@@ -552,7 +552,7 @@ export function LandingPage() {
             </div>
             <h3 className="text-xl font-display font-bold text-[#1F4D3D]">Make Contributions</h3>
             <p className="text-sm text-[#1C2826]/75 mt-3 leading-relaxed">
-              Pay via Paystack online or bring cash to the reception desk. Every deposit is automatically split 50/50.
+              Pay via Monnify online (bank transfer, USSD, card) or bring cash to the reception desk. Every deposit is automatically split 50/50.
             </p>
           </div>
 

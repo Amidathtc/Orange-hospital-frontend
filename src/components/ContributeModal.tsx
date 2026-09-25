@@ -91,10 +91,18 @@ export function ContributeModal({ fundType, fundLabel, defaultAmount, onClose }:
         <button
           onClick={handlePay}
           disabled={submitting || amount < 1000}
-          className="w-full bg-forest text-white font-semibold text-sm rounded-lg py-3.5 disabled:opacity-60"
+          className="w-full bg-forest text-white font-semibold text-sm rounded-lg py-3.5 disabled:opacity-60 hover:bg-forest-light transition-all shadow-md"
         >
-          {submitting ? 'Redirecting to Paystack…' : `Pay ${formatNaira(amount)}`}
+          {submitting ? 'Redirecting to Monnify Payment…' : `Pay ${formatNaira(amount)} via Monnify`}
         </button>
+
+        <div className="mt-4 text-center">
+          <p className="text-[11px] text-ink-soft flex items-center justify-center gap-1.5 font-medium">
+            <span>🔒 Bank Transfer, Card & USSD</span>
+            <span className="text-ink/30">•</span>
+            <span className="text-forest font-semibold">Monnify Secure</span>
+          </p>
+        </div>
       </div>
     </div>
   );
