@@ -1,0 +1,18 @@
+# https://ajo.orangehealthinitiative.com/robots.txt
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /signup
+Allow: /forgot-password
+
+# Disallow private user/staff dashboards from search engine index
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /reception
+Disallow: /reception/*
+Disallow: /marketer
+Disallow: /marketer/*
+Disallow: /member
+Disallow: /member/*
+
+Sitemap: https://ajo.orangehealthinitiative.com/sitemap.xml

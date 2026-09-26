@@ -3,14 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Orange Health Ajo &middot; Community Health & General Savings</title>
-  <meta name="description" content="Save daily or weekly with Orange Health Ajo. Receive medical care coverage and cash returns." />
+  
+  <!-- Primary Meta Tags -->
+  <title>Orange Health Ajo | Community Healthcare Savings & Emergency Cash Fund</title>
+  <meta name="title" content="Orange Health Ajo | Community Healthcare Savings & Emergency Cash Fund" />
+  <meta name="description" content="Save daily or weekly with Orange Health Ajo. Gain direct medical care coverage at Orange Hospital and build emergency savings with high-yield returns in Nigeria." />
+  <meta name="keywords" content="Orange Health Ajo, Orange Hospital, Orange Health Initiative, healthcare savings Nigeria, daily ajo, weekly thrift, micro-health insurance, emergency cash loan, medical fund" />
+  <meta name="author" content="Orange Health Initiative" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://ajo.orangehealthinitiative.com" />
+
+  <!-- Open Graph / Facebook / WhatsApp / LinkedIn -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ajo.orangehealthinitiative.com/" />
+  <meta property="og:site_name" content="Orange Health Ajo" />
+  <meta property="og:title" content="Orange Health Ajo | Community Healthcare Savings & General Fund" />
+  <meta property="og:description" content="Save daily or weekly. Get subsidized medical care at Orange Hospital and build emergency cash savings with complete financial peace of mind." />
+  <meta property="og:image" content="https://ajo.orangehealthinitiative.com/orange-hospital-logo.svg" />
+  <meta property="og:image:alt" content="Orange Health Ajo Logo" />
+  <meta property="og:locale" content="en_NG" />
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://ajo.orangehealthinitiative.com/" />
+  <meta name="twitter:title" content="Orange Health Ajo | Community Healthcare Savings" />
+  <meta name="twitter:description" content="Save daily or weekly. Get subsidized medical care at Orange Hospital and build emergency cash savings." />
+  <meta name="twitter:image" content="https://ajo.orangehealthinitiative.com/orange-hospital-logo.svg" />
+
+  <!-- Icons & Web App Manifest -->
   <link rel="icon" type="image/svg+xml" href="/orange-hospital-logo.svg" />
   <link rel="apple-touch-icon" href="/orange-hospital-logo.svg" />
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#1F4D3D" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Orange Ajo" />
+
+  <!-- Typography Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Structured Data for Google Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalOrganization",
+        "@id": "https://orangehealthinitiative.com/#organization",
+        "name": "Orange Health Initiative",
+        "url": "https://orangehealthinitiative.com",
+        "logo": "https://ajo.orangehealthinitiative.com/orange-hospital-logo.svg",
+        "description": "Community-driven healthcare and cooperative thrift savings platform in Nigeria."
+      },
+      {
+        "@type": "FinancialProduct",
+        "@id": "https://ajo.orangehealthinitiative.com/#product",
+        "name": "Orange Health Ajo",
+        "url": "https://ajo.orangehealthinitiative.com",
+        "provider": {
+          "@id": "https://orangehealthinitiative.com/#organization"
+        },
+        "description": "A dual-pool micro-savings plan providing subsidized hospital care and flexible emergency cash returns.",
+        "category": "Micro-Insurance & Thrift Savings"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does Orange Health Ajo differ from traditional Ajo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Traditional Ajo is purely financial. Orange Health Ajo splits your contribution into two pools: Health Ajo (providing subsidized medical care at Orange Hospital) and General Ajo (providing flexible emergency cash draws)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much can I contribute and what is the schedule?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can choose daily (₦500/day minimum) or weekly contributions tailored to your income flow. Contributions can be made online or in cash at the clinic desk."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How fast can I access medical care or draw emergency cash?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Medical care at Orange Hospital is immediate upon reception check-in. Emergency cash draw requests from your General pool are reviewed and disbursed within 24 to 48 hours."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="bg-paper text-ink">
+<body class="bg-[#FBF7EE] text-[#1C2826] antialiased">
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

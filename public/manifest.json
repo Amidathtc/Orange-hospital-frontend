@@ -1,0 +1,17 @@
+{
+  "short_name": "Orange Ajo",
+  "name": "Orange Health Ajo - Community Healthcare & Savings",
+  "icons": [
+    {
+      "src": "/orange-hospital-logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192 512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FBF7EE",
+  "theme_color": "#1F4D3D",
+  "display": "standalone",
+  "orientation": "portrait",
+  "description": "Daily and weekly community healthcare savings and emergency cash draws by Orange Hospital."
+}
