@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" fill="none">
+  <!-- Background with subtle luxury gradient -->
+  <rect width="1200" height="630" fill="#1F4D3D" />
+  <circle cx="1100" cy="100" r="350" fill="#286450" opacity="0.6" />
+  <circle cx="100" cy="550" r="280" fill="#16382C" opacity="0.8" />
+  
+  <!-- Decorative border line -->
+  <rect x="40" y="40" width="1120" height="550" rx="24" stroke="#52B848" stroke-width="2" stroke-opacity="0.3" fill="none" />
+
+  <!-- Logo Graphics Group -->
+  <g transform="translate(100, 160) scale(1.3)">
+    <!-- Left Leaf -->
+    <path d="M106 38 C94 30 76 20 78 8 C94 6 104 20 108 36 Z" fill="#52B848" />
+    <!-- Right Leaf -->
+    <path d="M109 38 C118 30 130 22 140 22 C140 32 128 40 111 40 Z" fill="#52B848" />
+    <!-- Upper Eye Shape -->
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M44 66 C72 40 138 40 166 72 C138 84 72 84 44 66 Z M105 48 C113.284 48 120 54.7157 120 63 C120 71.2843 113.284 78 105 78 C96.7157 78 90 71.2843 90 63 C90 54.7157 96.7157 48 105 48 Z" fill="#EE5816" />
+    <!-- Lower Wedge -->
+    <path d="M38 158 L176 94 C184 130 152 182 108 192 C72 192 46 178 38 158 Z" fill="#EE5816" />
+  </g>
+
+  <!-- Typography Content -->
+  <text x="380" y="240" font-family="system-ui, -apple-system, sans-serif" font-weight="800" font-size="64" fill="#FFFFFF">
+    Orange Health <tspan fill="#EE5816">Ajo</tspan>
+  </text>
+
+  <text x="380" y="300" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="24" fill="#52B848" letter-spacing="4">
+    ORANGE HOSPITAL COOPERATIVE
+  </text>
+
+  <text x="380" y="380" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="28" fill="#E8ECE9">
+    Daily &amp; Weekly Healthcare Savings Scheme
+  </text>
+
+  <text x="380" y="425" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#A4C2B8">
+    • Full Medical Coverage at Orange Hospital
+  </text>
+  <text x="380" y="465" font-family="system-ui, -apple-system, sans-serif" font-weight="400" font-size="22" fill="#A4C2B8">
+    • Flexible Emergency Cash Draw Returns
+  </text>
+
+  <!-- Verified Badge -->
+  <g transform="translate(380, 500)">
+    <rect width="360" height="42" rx="21" fill="#16382C" stroke="#52B848" stroke-width="1.5" />
+    <text x="30" y="27" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="16" fill="#FFFFFF">
+      🔒 Secure Micro-Savings &amp; Healthcare
+    </text>
+  </g>
+</svg>
