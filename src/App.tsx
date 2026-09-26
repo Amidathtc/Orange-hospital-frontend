@@ -9,6 +9,7 @@ import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { VerifyEmailPage } from './pages/VerifyEmailPage';
 import { MemberDashboard } from './pages/member/MemberDashboard';
 import { ReceptionDashboard } from './pages/reception/ReceptionDashboard';
+import { MarketerDashboard } from './pages/marketer/MarketerDashboard';
 import { AdminDashboard } from './pages/admin/AdminDashboard';
 
 export function App() {
@@ -37,6 +38,15 @@ export function App() {
             element={
               <ProtectedRoute allowedRoles={['RECEPTIONIST', 'ADMIN']}>
                 <ReceptionDashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/marketer"
+            element={
+              <ProtectedRoute allowedRoles={['MARKETER']}>
+                <MarketerDashboard />
               </ProtectedRoute>
             }
           />

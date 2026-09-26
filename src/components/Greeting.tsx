@@ -1,6 +1,6 @@
 import { getGreeting } from '../lib/greeting';
 
-type Role = 'MEMBER' | 'RECEPTIONIST' | 'ADMIN';
+type Role = 'MEMBER' | 'RECEPTIONIST' | 'MARKETER' | 'ADMIN';
 
 export function Greeting({ fullName, role }: { fullName: string; role: Role }) {
   const { hello, line } = getGreeting(fullName, role);

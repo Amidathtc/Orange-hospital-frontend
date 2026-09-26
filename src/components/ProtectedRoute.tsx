@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
-type Role = 'MEMBER' | 'RECEPTIONIST' | 'ADMIN';
+type Role = 'MEMBER' | 'RECEPTIONIST' | 'MARKETER' | 'ADMIN';
 
 function getRoleHome(role: Role): string {
   switch (role) {
@@ -9,6 +9,8 @@ function getRoleHome(role: Role): string {
       return '/admin';
     case 'RECEPTIONIST':
       return '/reception';
+    case 'MARKETER':
+      return '/marketer';
     case 'MEMBER':
     default:
       return '/member';

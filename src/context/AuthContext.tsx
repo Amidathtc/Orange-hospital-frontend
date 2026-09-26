@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { api, setToken, clearToken } from '../lib/api';
 
-type Role = 'MEMBER' | 'RECEPTIONIST' | 'ADMIN';
+type Role = 'MEMBER' | 'RECEPTIONIST' | 'MARKETER' | 'ADMIN';
 
 interface User {
   id: string;

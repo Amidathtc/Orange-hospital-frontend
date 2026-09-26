@@ -1,4 +1,4 @@
-type Role = 'MEMBER' | 'RECEPTIONIST' | 'ADMIN';
+type Role = 'MEMBER' | 'RECEPTIONIST' | 'MARKETER' | 'ADMIN';
 
 function timeOfDay(): 'morning' | 'afternoon' | 'evening' {
   const hour = new Date().getHours();
@@ -19,6 +19,11 @@ const ROLE_LINES: Record<Role, string[]> = {
     'Ready to help someone today?',
     'Someone\'s ajo might need you today.',
     'Front desk is open — let\'s go.',
+  ],
+  MARKETER: [
+    'Let\'s grow the community today.',
+    'Every new member starts with a conversation.',
+    'The pipeline is yours to build.',
   ],
   ADMIN: [
     'Here\'s how the community fund is doing.',

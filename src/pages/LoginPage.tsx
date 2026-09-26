@@ -18,6 +18,7 @@ export function LoginPage() {
     if (user) {
       if (user.role === 'ADMIN') navigate('/admin', { replace: true });
       else if (user.role === 'RECEPTIONIST') navigate('/reception', { replace: true });
+      else if (user.role === 'MARKETER') navigate('/marketer', { replace: true });
       else navigate('/member', { replace: true });
     }
   }, [user, navigate]);
@@ -45,6 +46,7 @@ export function LoginPage() {
     const role = stored ? JSON.parse(stored).role : null;
     if (role === 'ADMIN') navigate('/admin', { replace: true });
     else if (role === 'RECEPTIONIST') navigate('/reception', { replace: true });
+    else if (role === 'MARKETER') navigate('/marketer', { replace: true });
     else navigate('/member', { replace: true });
   }
 

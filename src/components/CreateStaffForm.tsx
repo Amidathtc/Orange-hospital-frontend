@@ -1,7 +1,7 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { api, ApiError } from '../lib/api';
 
-type StaffRole = 'RECEPTIONIST' | 'ADMIN';
+type StaffRole = 'RECEPTIONIST' | 'MARKETER' | 'ADMIN';
 
 export function CreateStaffForm() {
   const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ export function CreateStaffForm() {
         method: 'POST',
         body: { fullName, phone, password, role },
       });
-      setSuccess(`${role === 'ADMIN' ? 'Admin' : 'Receptionist'} account created for ${fullName}.`);
+      setSuccess(`${role === 'ADMIN' ? 'Admin' : role === 'MARKETER' ? 'Marketer' : 'Receptionist'} account created for ${fullName}.`);
       setFullName('');
       setPhone('');
       setPassword('');
@@ -60,7 +60,7 @@ export function CreateStaffForm() {
 
       {!open && !success && (
         <div className="px-6 py-6 text-sm text-ink-soft text-center">
-          Create a login for a receptionist or another admin.
+          Create a login for a receptionist, marketer, or another admin.
         </div>
       )}
 
@@ -105,6 +105,17 @@ export function CreateStaffForm() {
                 }`}
               >
                 Receptionist
+              </button>
+              <button
+                type="button"
+                onClick={() => setRole('MARKETER')}
+                className={`flex-1 rounded-lg py-2.5 text-sm font-semibold border ${
+                  role === 'MARKETER'
+                    ? 'border-amber-600 text-amber-600 bg-amber-600/5'
+                    : 'border-ink/15 text-ink-soft'
+                }`}
+              >
+                Marketer
               </button>
               <button
                 type="button"

@@ -20,6 +20,7 @@ export function SignupPage() {
     if (user) {
       if (user.role === 'ADMIN') navigate('/admin', { replace: true });
       else if (user.role === 'RECEPTIONIST') navigate('/reception', { replace: true });
+      else if (user.role === 'MARKETER') navigate('/marketer', { replace: true });
       else navigate('/member', { replace: true });
     }
   }, [user, navigate]);

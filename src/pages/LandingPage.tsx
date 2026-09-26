@@ -113,7 +113,7 @@ export function LandingPage() {
           <div className="flex items-center gap-3">
             {user ? (
               <Link
-                to={user.role === 'ADMIN' ? '/admin' : user.role === 'RECEPTIONIST' ? '/reception' : '/member'}
+                to={user.role === 'ADMIN' ? '/admin' : user.role === 'RECEPTIONIST' ? '/reception' : user.role === 'MARKETER' ? '/marketer' : '/member'}
                 className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1F4D3D] text-white font-medium text-sm hover:bg-[#16382C] shadow-lg shadow-[#1F4D3D]/25 transition-all hover:scale-[1.02]"
               >
                 <span>Dashboard</span>
